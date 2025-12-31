@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================== */
+/* GENEL ARKA PLAN */
+/* ===================== */
+
+body {
+  background: url("images/newyear-bg.png") center / cover no-repeat fixed;
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
+}
+
+/* ===================== */
+/* SAHNELER */
+/* ===================== */
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.scene.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ===================== */
+/* OVERLAY */
+/* ===================== */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.55)
+  );
+  z-index: 0;
+}
+
+/* ===================== */
+/* SAHNE 1 */
+/* ===================== */
+
+.main-title {
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  text-align: center;
+  color: rgb(117, 104, 104);
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.main-title span {
+  display: block;
+  margin-top: 10px;
+  color: rgb(117, 104, 104);
+  font-size: clamp(3.5rem, 7vw, 5.4rem);
+  font-family: 'Great Vibes', cursive;
+}
+
+.hint {
+  margin-top: 26px;
+  opacity: .6;
+  color: rgb(117, 104, 104);
+  font-size: 1rem;
+  z-index: 2;
+}
+
+/* ===================== */
+/* YAZILAR (YAN YANA) */
+/* ===================== */
+
+.story {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 0 8vw;
+  z-index: 2;
+}
+
+/* Tek tek yazılar */
+.line {
+  position: relative;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  color: white;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+  text-shadow: 0 8px 30px rgba(0,0,0,.55);
+  white-space: nowrap;
+}
+
+.line.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.line.highlight {
+  color: #ff6b8f;
+  font-size: clamp(3.2rem, 6vw, 4.6rem);
+}
+
+/* ===================== */
+/* FOTOĞRAFLAR (TAM ORTALI) */
+/* ===================== */
+
+.photos {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.photos img {
+  position: absolute;
+  width: min(75%, 900px);
+  height: 65%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.8s ease, transform 2.2s ease;
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+
+.photos img.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===================== */
+/* FINAL */
+/* ===================== */
+
+.final-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 6vw, 4.6rem);
+  text-align: center;
+  color: white;
+  text-shadow: 0 10px 40px rgba(0,0,0,.6);
+  z-index: 3;
+}
+
+.final-text span {
+  display: block;
+  margin-top: 24px;
+  color: #ff6b8f;
+  font-size: clamp(3.6rem, 7vw, 5.2rem);
+}
+
+/* ===================== */
+/* iPad / Mobil */
+/* ===================== */
+
+@media (max-width: 1024px) {
+  .story {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .line {
+    text-align: center;
+    font-size: 2.6rem;
+  }
+
+  .line.highlight {
+    font-size: 3.2rem;
+  }
+
+  .photos img {
+    width: 85%;
+    height: 60%;
+  }
+}
